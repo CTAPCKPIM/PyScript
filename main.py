@@ -161,6 +161,7 @@ def testNEW():
 testNEW()
 
 def setPrice():
+	print(w3.isConnected())
 	for key in data:
 		print(key.get('url'))
 

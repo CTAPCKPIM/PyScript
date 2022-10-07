@@ -1,7 +1,7 @@
 [
 	{
 		"net": "Ethereum",
-		"id": 4,
+		"id": 5,
 		"url": "https://api.etherscan.com/api?module=gastracker&action=gasoracle&apikey=YourApiKeyToken",
 		"tokens": [
 			{
