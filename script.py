@@ -25,7 +25,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 'eth_price_cg' - the array with price in USD(CoinGecko);
 """
 load_dotenv()
-with open('dataset.json') as f:
+with open('dataset3.json') as f:
     data = json.load(f)
 
 headers = { 
@@ -65,7 +65,7 @@ address_farm = '0xA64e04F3309794A7353894465B3e11D0007115aC'
 'data' - JSON from scans; 
 'gas_price' - price of the gas;
 """
-def getGasPrise(network): 
+def getGasPrice(network): 
 	session = Session()
 	session.headers.update(headers)
 	try:
@@ -106,7 +106,6 @@ def priceFromCryptocompare(currency):
 			data_eth = json.loads(response.text) 
 			return int(data_eth['USD'] * pow(10, eth_decimals))
 		else: 
-			print('Only:\n"CRV" / "crv",\n"WETH" / "weth",\n"FARM" / "farm')
 			return 0
 	except (ConnectionError, Timeout, TooManyRedirects, KeyError):
 		print('Error: connecting not successful(Cryptocompare)')
@@ -140,7 +139,6 @@ def priceFromCoinGecko(currency):
 			usd_ = data_eth['market_data']['current_price']['usd']
 			return int(usd_ * pow(10, eth_decimals))
 		else: 
-			print('Only:\n"curve-dao-token",\n"weth",\n"harvest-finance" ')
 			return 0
 	except (ConnectionError, Timeout, TooManyRedirects, KeyError):
 		print('Error: connecting not successful(CoinGecko)')
@@ -160,38 +158,36 @@ def test():
 	weth = w3.eth.contract(address=address_weth, abi=abi_weth)
 	farm = w3.eth.contract(address=address_farm, abi=abi_farm)
 
-	networks = data['networks']
 	contracts_eth = [crv, weth, farm]
-	tokens_eth = data['tokensETH']
-	urls = data['url']
+	
+	'''for key, value in data.items():
+		if key == 'urlETH':
+			gasPriceETH = getGasPrice(value)
+			print(value)
+			print(gasPriceETH)
+		if key == 'urlFTM':
+			gasPriceFTM = getGasPrice(value)
+			print(value)
+			print(gasPriceFTM)'''
+	
+	print(print(dir(contracts_eth[0])))
 
-	for url in urls:
-		for ur in url:
-			if ur == 'ETH':
-				gasPriceETH = getGasPrise(url[ur])
-				print(gasPriceETH)
-			if ur == 'FTM':
-				gasPriceFTM = getGasPrise(url[ur])
-				print(gasPriceFTM)
 
-	for network in networks:
-		for net in network:
-				if net == 'ETH':
-					for index, token in enumerate(tokens_eth):
-						for ide in token:
-							if ide == 'name':
-								print(f'Network:{network[net]}, token:{token[ide]}, price:{priceFromCryptocompare(token[ide])}')	
-								tx = contracts_eth[index].functions.setPriceInUSD(priceFromCryptocompare(token[ide])).build_transaction({
-									'nonce': nonce,
-									'chainId': 4,
-									'gasPrice': gasPriceETH,
-									'gas': 3000000,
-								})
-								nonce +=1
-								signed_tx = w3.eth.account.sign_transaction(tx, private_key=SECRET)
-								res =  w3.eth.send_raw_transaction(signed_tx.rawTransaction)
-								print(f'Network:{network[net]}:{w3.toHex(res)}')
-				#if net == 'FTM':
-						#print(network[net])
+	#for key, value in data.items():
+        #if key == 'tokensETH':
+            #for num, token in enumerate(value):
+                #for index, name in token.items():
+                    #if index == 'name':
+                        #print(f'Contract: {contracts_eth[num]} => Token: {name}')
+                        #tx = contracts_eth[num].functions.setPriceInUSD(priceFromCryptocompare(name)).build_transaction({
+                            #'nonce': nonce,
+                            #'chainId': 4,
+                            #'gasPrice': gasPriceETH,
+                            #'gas': 3000000,
+                        #})
+                        #nonce +=1
+                        #signed_tx = w3.eth.account.sign_transaction(tx, private_key=SECRET)
+                        #res =  w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+                        #print(f'Token:{name}:{w3.toHex(res)}')			
 
-test()
+#test()
