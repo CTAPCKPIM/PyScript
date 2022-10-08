@@ -191,3 +191,8 @@ def test():
                         #print(f'Token:{name}:{w3.toHex(res)}')			
 
 #test()
+
+def t(): 
+	print(type(abi_crv))
+	print(type(address_crv))
+#t()

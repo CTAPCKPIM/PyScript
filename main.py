@@ -132,7 +132,10 @@ def priceFromCoinGecko(currency):
 
 """ A function for creating transactions 
 
-'' - calling 'getGasPrise()' a function and getting a price on gas;
+'contract' - initializing an object 'contract';
+'price' - returning a price;
+'chainId' - returning an id of chain;
+'gasPrice' - returning a gas price;
 'nonce' - getting a nonce from the address;
 """
 def testNEW():
@@ -141,17 +144,19 @@ def testNEW():
 		tokens = key.get('tokens')
 		for token in tokens:
 			#import pdb;pdb.set_trace()
-			contract = w3.eth.contract(address=token.get('address'), abi=token.get('abi'))
-			price = priceFromCryptocompare(token.get('name'))  # returning a price
-			chainId = key.get('id')  # returning an id of chain
-			gasPrice = getGasPrice(key.get('url'))  # returning a gas price
+			abi_ = token.get('abi')
+			address_ = token.get('address')
+			contract = w3.eth.contract(address=address_, abi=abi_)
+			price = priceFromCryptocompare(token.get('name'))
+			chainId = key.get('id') 
+			gasPrice = getGasPrice(key.get('url'))
 			tx = contract.functions.setPriceInUSD(price
 				).build_transaction(
 				{
 					'nonce':nonce,
 					'chainId':chainId,
 					'gasPrice':gasPrice,
-					'gas':3000000,
+					'gas':1000000,
 				})
 			nonce +=1
 			signed_tx = w3.eth.account.sign_transaction(tx, private_key=SECRET)
@@ -159,11 +164,3 @@ def testNEW():
 			print(f"Token: {token.get('name')} => {w3.toHex(res)}")
 
 testNEW()
-
-def setPrice():
-	print(w3.isConnected())
-	for key in data:
-		print(key.get('url'))
-
-#setPrice()
-
