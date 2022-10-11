@@ -11,33 +11,35 @@ from pycoingecko import CoinGeckoAPI
 from dotenv import load_dotenv
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-
-""" All variables
-
-'load_dotenv()'' - load the configuration from a .env;
-'headers' - requesting JSON from the site;
-'API' - loading the variable;
-'INFURA' - your address of the provider; 
-'SECRET' - your private key;
-'w3' - connecting Web3;
-'eth_decimals' - decimals of USDC in ETH network;
-'eth_price_cc' - the array with price in USD(Cryptocompare);
-'eth_price_cg' - the array with price in USD(CoinGecko);
-"""
 load_dotenv()
+
 with open('dataset3.json') as f:
     data = json.load(f)
 
+# 'headers' - requesting JSON from the site;
 headers = { 
 	'Accepts': 'application/json'
 }
-# Dotenv variables
+
+""" All variables
+
+Dotenv variables:
+ 'API' - loading the variable;
+ 'INFURA' - your address of the provider; 
+ 'SECRET' - your private key;
+
+Other variables:
+ 'cc' - connecting Сryptocompare;
+ 'cg' - connecting CoinGecko;
+ 'w3' - connecting Web3;
+ 'eth_decimals' - decimals of USDC in ETH network;
+"""
 API = os.getenv('API_KEY')
 INFURA = os.getenv('INFURA_URL')
 SECRET = os.getenv('SECRET_KEY')
 
 # Connecting providers
-ccobj = cc.cryptocompare._set_api_key_parameter(API)
+cc = cc.cryptocompare._set_api_key_parameter(API)
 cg = CoinGeckoAPI()
 w3 = Web3(Web3.HTTPProvider(INFURA))
 w3.eth.set_gas_price_strategy(rpc_gas_price_strategy)
@@ -46,24 +48,10 @@ w3.eth.set_gas_price_strategy(rpc_gas_price_strategy)
 eth_decimals = 6
 address = '0xf39D262c556aBefFC619847eE0355af42c4d0e91'
 
-""" ABIs and address of smart contracts(Ethereum network) """
-abi_crv = json.loads('[{"inputs":[{"internalType":"address","name":"_addrCRV","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrCRV","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
-abi_weth = json.loads('[{"inputs":[{"internalType":"address","name":"_addrWETH","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrWETH","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
-abi_farm = json.loads('[{"inputs":[{"internalType":"address","name":"_addrFARM","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrFARM","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
-# Address`s
-address_crv = '0x6DE6013B8Ea9fA78DB10e7D7e4D9E66668FaFAae'
-address_weth = '0x71815DcE02aAb149048e68c1EC777331fC890462'
-address_farm = '0xA64e04F3309794A7353894465B3e11D0007115aC'
-
-""" Connecting to smart contracts (ETH) """
-#crv = w3.eth.contract(address=address_crv, abi=abi_crv)
-#weth = w3.eth.contract(address=address_weth, abi=abi_weth)
-#farm = w3.eth.contract(address=address_farm, abi=abi_farm)
-
 """ Function parsing price of the gas
 
-'data' - JSON from scans; 
-'gas_price' - price of the gas;
+ 'data' - JSON from scans; 
+ 'gas_price' - price of the gas;
 """
 def getGasPrice(network): 
 	session = Session()
@@ -72,11 +60,11 @@ def getGasPrice(network):
 		response = session.get(network)
 		data = json.loads(response.text)
 		gas_price = int(float(data['result']['FastGasPrice']) * 1e9)
-		if (data['status'] == '1' and gas_price < gas_price * 5):  #  for Fantom network
-			print('Normal price')
+		if (data['status'] == '1' and gas_price < gas_price * 5):
+			print('Price: Normal')
 			return gas_price
-		elif(data['status'] == '1' and gas_price > gas_price * 5):  #  for Fantom network
-			print('Price * 5') 
+		elif(data['status'] == '1' and gas_price > gas_price * 5):
+			print('Price: Overpriced') 
 			return gas_price * 5
 		else: return 0
 	except (ConnectionError, Timeout, TooManyRedirects, KeyError):
@@ -84,9 +72,8 @@ def getGasPrice(network):
 
 """ Function parsing price of the cryptocurrency in USD from 'Cryptocompare'
 
-'currency_eth' - array of crypto currencys(CC)
-'data' - converting it to a dictionary;
-'price' - turn the USD price into a number with a power of 6;
+ 'data_eth' - converting it to a dictionary;
+  Return the USD price into a number with a power of 6;
 """
 def priceFromCryptocompare(currency):
 	session = Session()
@@ -113,10 +100,9 @@ def priceFromCryptocompare(currency):
 
 """ Function parsing price of the cryptocurrency in USD from 'CoinGecko'
 
-'currency_eth' - array of crypto currencys(CG);
-'data' - converting it to a dictionary;
-'usd_' - the price from JSON;
-'price' - turn the USD price into a number with a power of 6;
+ 'data_eth' - converting it to a dictionary;
+ 'usd_' - the price from JSON;
+  Return the USD price into a number with a power of 6;
 """
 def priceFromCoinGecko(currency):
 	session = Session()
@@ -146,53 +132,35 @@ def priceFromCoinGecko(currency):
 
 """ A function for creating transactions 
 
-'gasPrice/ETH/FTM..' - calling 'getGasPrise()' a function and getting a price on gas;
+'contract' - initializing an object 'contract';
+'price' - returning a price;
+'chainId' - returning an id of chain;
+'gasPrice' - returning a gas price;
 'nonce' - getting a nonce from the address;
 """
-def test():
+def testNEW():
 	nonce = w3.eth.get_transaction_count(address)
-	gasPriceETH = 0
-	gasPriceFTM = 0
+	for key in data:
+		tokens = key.get('tokens')
+		for token in tokens:
+			#import pdb;pdb.set_trace()
+			abi_ = token.get('abi')
+			address_ = token.get('address')
+			contract = w3.eth.contract(address=address_, abi=abi_)
+			price = priceFromCryptocompare(token.get('name'))
+			chainId = key.get('id') 
+			gasPrice = getGasPrice(key.get('url'))
+			tx = contract.functions.setPriceInUSD(price
+				).build_transaction(
+				{
+					'nonce':nonce,
+					'chainId':chainId,
+					'gasPrice':gasPrice,
+					'gas':1000000,
+				})
+			nonce +=1
+			signed_tx = w3.eth.account.sign_transaction(tx, private_key=SECRET)
+			res = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+			print(f"Token: {token.get('name')} => {w3.toHex(res)}")
 
-	crv = w3.eth.contract(address=address_crv, abi=abi_crv)
-	weth = w3.eth.contract(address=address_weth, abi=abi_weth)
-	farm = w3.eth.contract(address=address_farm, abi=abi_farm)
-
-	contracts_eth = [crv, weth, farm]
-	
-	'''for key, value in data.items():
-		if key == 'urlETH':
-			gasPriceETH = getGasPrice(value)
-			print(value)
-			print(gasPriceETH)
-		if key == 'urlFTM':
-			gasPriceFTM = getGasPrice(value)
-			print(value)
-			print(gasPriceFTM)'''
-	
-	print(print(dir(contracts_eth[0])))
-
-
-	#for key, value in data.items():
-        #if key == 'tokensETH':
-            #for num, token in enumerate(value):
-                #for index, name in token.items():
-                    #if index == 'name':
-                        #print(f'Contract: {contracts_eth[num]} => Token: {name}')
-                        #tx = contracts_eth[num].functions.setPriceInUSD(priceFromCryptocompare(name)).build_transaction({
-                            #'nonce': nonce,
-                            #'chainId': 4,
-                            #'gasPrice': gasPriceETH,
-                            #'gas': 3000000,
-                        #})
-                        #nonce +=1
-                        #signed_tx = w3.eth.account.sign_transaction(tx, private_key=SECRET)
-                        #res =  w3.eth.send_raw_transaction(signed_tx.rawTransaction)
-                        #print(f'Token:{name}:{w3.toHex(res)}')			
-
-#test()
-
-def t(): 
-	print(type(abi_crv))
-	print(type(address_crv))
-#t()
+testNEW()
