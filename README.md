@@ -4,36 +4,31 @@
 
 ---
 ___Network___(**testnets**):
-> + **Ethereum**;
-```shell
->> _CRV_
->> _WETH_
->> _FARM_
-```
+> **Ethereum**;
+> + _CRV_
+> + _WETH_
+> + _FARM_
+
 > + **Fantom**;
-```shell
->> _SPIRIT_
->> _WFTM_
->> _YFI_
-```
+> + _SPIRIT_
+> + _WFTM_
+> + _YFI_
+
 > + **Polygon**;
-```shell
->> _QUICK_
->> _ORBS_
->> _WMATIC_
-```
+> + _QUICK_
+> + _ORBS_
+> + _WMATIC_
+
 > + **AVAX**;
-```shell
->> _WAVAX_
->> _SPELL_
->> _PTP_
-```
+> + _WAVAX_
+> + _SPELL_
+> + _PTP_
+
 > + **BSC**;
-```shell
->> _WBNB_
->> _CAKE_
->> _STG_
-```
+> + _WBNB_
+> + _CAKE_
+> + _STG_
+
 ---
 (___Completed.___)
 
