@@ -5,26 +5,35 @@
 ---
 ___Network___(**testnets**):
 > + **Ethereum**;
+```
 >> _CRV_
 >> _WETH_
 >> _FARM_
+```
 > + **Fantom**;
+```
 >> _SPIRIT_
 >> _WFTM_
 >> _YFI_
+```
 > + **Polygon**;
+```
 >> _QUICK_
 >> _ORBS_
 >> _WMATIC_
+```
 > + **AVAX**;
+```
 >> _WAVAX_
 >> _SPELL_
 >> _PTP_
+```
 > + **BSC**;
+```
 >> _WBNB_
 >> _CAKE_
 >> _STG_
-
+```
 ---
 (___Completed.___)
 
