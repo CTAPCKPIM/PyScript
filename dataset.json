@@ -2,6 +2,7 @@
 	{
 		"net": "Ethereum",
 		"id": 5,
+		"provider":"https://goerli.infura.io/v3/",
 		"url": "https://api.etherscan.com/api?module=gastracker&action=gasoracle&apikey=1246SZ18KCSTTAFM63HPJ5Y68TYTJWVUXJ",
 		"tokens": [
 			{
@@ -27,25 +28,104 @@
 	{
 		"net": "Fantom",
 		"id": 4002,
-		"url": "https://api.ftmscan.com/api?module=gastracker&action=gasoracle&apikey=YourApiKeyToken",
+		"provider": "https://fantom-testnet.blastapi.io/",
+		"url": "https://api.ftmscan.com/api?module=gastracker&action=gasoracle&apikey=J32KVIJ3E6JW2PBZ3JQ89HAW21FKRERJME",
 		"tokens": [
 			{
 				"name": "SPIRIT",
 				"longName": "spiritswap",
-				"address": "",
-				"abi": ""
+				"address": "0x7DC43c989ecA165d09456745755a3493E3733eb0",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrSPIRIT","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrSPIRIT","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 			},
 			{
-				"name": "WFTM",
+				"name": "FTM",
 				"longName": "wrapped-fantom",
-				"address": "",
-				"abi": ""
+				"address": "0x0EfB9C1e4e44d47d2E4b186d621E9D7670f25061",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrWFTM","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrWFTM","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 			},
 			{
 				"name": "YFI",
 				"longName": "yearn-finance",
-				"address": "",
-				"abi": ""
+				"address": "0xd7Eb24511179b73e82cE8Be2eDf7cba078D93c51",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrYFI","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrYFI","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			}
+		]
+	},
+	{
+		"net": "Mumbai",
+		"id": 80001,
+		"provider": "https://polygon-mumbai.g.alchemy.com/v2/",
+		"url": "https://api.polygonscan.com/api?module=gastracker&action=gasoracle&apikey=ND3MAH1PHXI3J37ZKCBD63SSNE1KK1UNWE",
+		"tokens": [
+			{
+				"name": "QUICK",
+				"longName": "quick",
+				"address": "0x7DC43c989ecA165d09456745755a3493E3733eb0",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrQUICK","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrQUICK","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "ORBS",
+				"longName": "orbs",
+				"address": "0x0EfB9C1e4e44d47d2E4b186d621E9D7670f25061",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrORBS","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrORBS","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "MATIC",
+				"longName": "wmatic",
+				"address": "0xd7Eb24511179b73e82cE8Be2eDf7cba078D93c51",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrWMATIC","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrWMATIC","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			}
+		]
+	},
+	{
+		"net": "AVAX",
+		"id": 43113,
+		"provider": "https://avalanche-fuji.infura.io/v3/",
+		"url": "https://api.snowtrace.io/api?module=proxy&action=eth_gasPrice&apikey=FAQ4926D3V217JG8ZG22TXY1KTTAE2P5V8",
+		"tokens": [
+			{
+				"name": "AVAX",
+				"longName": "wrapped-avax",
+				"address": "0x7DC43c989ecA165d09456745755a3493E3733eb0",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrWAVAX","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrWAVAX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "SPELL",
+				"longName": "spell-token",
+				"address": "0x0EfB9C1e4e44d47d2E4b186d621E9D7670f25061",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrSPELL","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrSPELL","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "PTP",
+				"longName": "platypus-finance",
+				"address": "0xd7Eb24511179b73e82cE8Be2eDf7cba078D93c51",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrPTP","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrPTP","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			}
+		]
+	},
+	{
+		"net": "BSC",
+		"id": 97,
+		"provider": "https://green-wandering-bush.bsc-testnet.discover.quiknode",
+		"url": "https://api.bscscan.com/api?module=gastracker&action=gasoracle&apikey=35X5NX5M5G7N655FEVQJSS3ZX7XVZ1RMN2",
+		"tokens": [
+			{
+				"name": "BNB", 
+				"longName": "binancecoin",
+				"address": "0x7DC43c989ecA165d09456745755a3493E3733eb0",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrBNB","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrBNB","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "CAKE",
+				"longName": "pancakeswap-token",
+				"address": "0x0EfB9C1e4e44d47d2E4b186d621E9D7670f25061",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrCAKE","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrCAKE","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+			},
+			{
+				"name": "STG",
+				"longName": "stargate-finance",
+				"address": "0xd7Eb24511179b73e82cE8Be2eDf7cba078D93c51",
+				"abi": [{"inputs":[{"internalType":"address","name":"_addrSTG","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"addrSTG","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceUSD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"returnSymbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_priceUSD","type":"uint256"}],"name":"setPriceInUSD","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 			}
 		]
 	}
