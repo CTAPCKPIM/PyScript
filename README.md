@@ -2,7 +2,7 @@
 ---
 **PyScript** - we are **parsing** the **price** of tokens, using _CoinGecko_, and _Cryptocompare_, and then with help **transactions**, **setting** prices in _smart contracts_.
 
-[**Link on Smart contracts'**](https://github.com/CTAPCKPIM/Smart-contracts-of-prices.git)
+[**Link on Smart contracts**](https://github.com/CTAPCKPIM/Smart-contracts-of-prices.git)
 
 ---
 ___Networks___(**testnets**):
