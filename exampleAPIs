@@ -1,0 +1,21 @@
+{
+	"net": "Ethereum_",
+	"5": <API key of the provider(infura)>,
+	<API key of the provider(infura)>: <key from etherscan>,
+	
+	"net": "Fantom_",
+	"4002": <API key of the provider(blastapi)>,
+	<API key of the provider(blastapi)>: <key from ftmscan>,
+
+	"net": "Mumbai_",
+	"80001": <API key of the provider(alchemy)>,
+	<API key of the provider(alchemy)>: <key from polygonscan>,
+
+	"net": "AVAX_",
+	"43113": <API key of the provider(infura)>,
+	<API key of the provider(infura)>: <key from snowtrace>,
+
+	"net": "BSC_",
+	"97": <API key of the provider(quiknode)>,
+	<API key of the provider(quiknode)>: <key from bscscan>"
+}
